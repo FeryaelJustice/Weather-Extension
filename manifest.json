@@ -1,18 +1,20 @@
 {
     "manifest_version": 3,
-    "name": "Shuzenji Weather",
+    "name": "Get your current weather",
     "version": "1.0.0",
     "action": {
         "default_popup": "index.html",
         "default_title": "Shuzenji Weather"
     },
-    "description": "Shuzenji Current Weather",
+    "description": "Get your current weather",
     "icons": {
         "16": "thecrock.png",
+        "32": "thecrock.png",
         "48": "thecrock.png",
         "128": "thecrock.png"
     },
     "author": "Feryael Justice",
-    "permissions": ["activeTab", "storage"],
+    "permissions": ["activeTab", "storage", "geolocation", "tabs"],
+    "host_permissions": ["http://*/*", "https://*/*"],
     "version_name": "Version 1"
 }
