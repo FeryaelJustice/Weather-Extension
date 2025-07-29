@@ -55,6 +55,30 @@ function fetchData(json) {
             ).catch(err => {
                 console.log(`Error fetching data: ${err}`);
             });
+        }, function (err) {
+            console.warn(`Geolocation error: ${err.message}. Using default location.`);
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=metric&appid=${API_KEY}`, {
+                method: 'GET',
+                headers: new Headers({
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                }),
+            }).then(res => {
+                if (res.status === 200) {
+                    console.log("Success on fetching data")
+                    return res.json();
+                }
+                else {
+                    console.error("Failed on fetching data")
+                    return null;
+                }
+            }).then(record => {
+                printData(record);
+            }
+            ).catch(err => {
+                console.log(`Error fetching data: ${err}`);
+            });
         });
     } else {
         console.warn("Geolocation is not supported by this browser.");
